@@ -1,0 +1,39 @@
+01-01-2012 19:45:00 Naomi is getting into the car
+02-01-2012 09:13:15 George is getting into the car
+04-01-2012 19:45:00 Naomi is getting into the car
+05-01-2012 09:13:15 George is getting into the car
+11-01-2012 19:45:00 Sivan is getting into the car
+15-01-2012 09:13:15 Sivan is getting into the car
+The changing word was: George, Naomi, Sivan
+
+01-01-2012 20:12:39 Naomi is eating at a restaurant
+03-01-2012 10:14:00 Naomi is eating at a diner
+04-01-2012 20:12:39 Naomi is eating at a restaurant
+06-01-2012 10:14:00 Naomi is eating at a diner
+11-01-2012 20:12:39 Naomi is eating at a car
+The changing word was: car, diner, restaurant
+
+02-01-2012 10:14:00 George is eating at a diner
+05-01-2012 10:14:00 Dvir is eating at a diner
+06-01-2012 10:14:00 Dvir is eating at a diner
+12-01-2012 10:14:00 Dvir is eating at a diner
+15-01-2012 10:14:00 Dvir is eating at a diner
+16-01-2012 10:14:00 Dvir is eating at a diner
+The changing word was: Dvir, George
+
+02-01-2012 09:13:15 George is getting into the car
+12-01-2012 09:13:15 George is getting into a car
+The changing word was: a, the
+
+01-01-2012 19:45:00 Naomi is getting into the car
+14-01-2012 19:45:00 Naomi is getting out the car
+The changing word was: into, out
+
+01-01-2012 20:12:39 Naomi is eating at a restaurant
+14-01-2012 20:12:39 Dvir is eating at a restaurant
+The changing word was: Dvir, Naomi
+
+03-01-2012 10:14:00 Naomi is eating at a diner
+16-01-2012 10:14:00 Naomi is drinking at a diner
+The changing word was: drinking, eating
+
