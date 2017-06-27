@@ -10,9 +10,11 @@ public class LogsManipulations {
         List<String> inputLines = getFromInput();
         try {
             prepareOutputFile();
+            //Complexity #1: number of lines of input
             for (String line : inputLines) {
                 String[] splitWordsOfLine = line.split(" ");
                 List<Integer> wordIndexesList = new ArrayList<>();
+              //Complexity #2: number of words in a line - it's negligible due to complexity #3
                 for(int i = 2 ; i < splitWordsOfLine.length ; i++){
                     String word = splitWordsOfLine[i];
                     Integer index = wordHashMap.get(word);
@@ -25,6 +27,7 @@ public class LogsManipulations {
                 }
                 SentenceIndexed currentSentenceIndexed = new SentenceIndexed(wordIndexesList, line);
                 Set<Integer> indexesSet = new HashSet<>();
+                //Complexity #3: number of lines of input
                 for (SentenceIndexed sentenceIndexed : sentenceIndexedList) {
                     int differenceIndex = sentenceIndexed.isMatch(wordIndexesList);
                     if (differenceIndex == -1) {
@@ -62,6 +65,7 @@ public class LogsManipulations {
                 new FileOutputStream("output.txt"), "utf-8"));
     }
     private static void printResult() throws IOException {
+    	//Complexity #4: number of groups of similar sentences - it's negligible due to complexity of #1 and #3.
         for(SimilarSentences similarSentences : similarSentencesAllLists){
             printSentencesGroup(similarSentences);
             printLine("");
@@ -69,16 +73,17 @@ public class LogsManipulations {
     }
     private static void printLine(String msg) throws IOException {
         outputFileWriter.write(msg + "\n");
-        System.out.println(msg);
     }
     private static void printSentencesGroup(SimilarSentences similarSentences) throws IOException {
         Set<String> differentWords = new TreeSet<>();
+        //Complexity #5: number of similar sentences from each group - it's negligible due to complexity of #1 and #3.
         for(SentenceIndexed sentenceIndexed : similarSentences.similarSentenceList){
             printLine(sentenceIndexed.line);
             differentWords.add(sentenceIndexed.getWordInIndex(similarSentences.differenceLocation));
         }
         printMsg("The changing word was: ");
         boolean isFirstWord = true;
+        //Complexity #6: number of difference words - it's negligible due to complexity of #5.
         for(String word : differentWords){
             if(isFirstWord){
                 isFirstWord = false;
@@ -92,12 +97,12 @@ public class LogsManipulations {
     }
     private static void printMsg(String msg) throws IOException {
         outputFileWriter.write(msg);
-        System.out.print(msg);
     }
     private static List<String> getFromInput() throws IOException {
         List<String> lines = new ArrayList<>();
         try(BufferedReader br = new BufferedReader(new FileReader("input.txt"))) {
             String line = br.readLine();
+            //Complexity #7: number of lines from input.
             while(line != null){
             	lines.add(line);
             	line = br.readLine();
@@ -119,6 +124,7 @@ public class LogsManipulations {
                 return -1;
             }
             int indexFound = -1;
+            //Complexity #8: number of words indexes of a sentence.
             for(int i = 0 ; i < this.wordIndexesList.size() ; i++){
                 if(!this.wordIndexesList.get(i).equals(wordIndexesList.get(i))){
                     if(indexFound != -1){
@@ -173,6 +179,8 @@ public class LogsManipulations {
         int differenceLocation;
         Set<SentenceIndexed> similarSentenceList;
         public SimilarSentences(SentenceIndexed sentenceIndexed1, SentenceIndexed sentenceIndexed2, int differenceLocation){
+            //Complexity #9: each addition into this tree is in log(N), N is the number of similar sentences.
+	    //Which is in total N*log(N) - it's negligible due to complexity of #1 and #3..
             similarSentenceList = new TreeSet<>();
             similarSentenceList.add(sentenceIndexed1);
             similarSentenceList.add(sentenceIndexed2);
